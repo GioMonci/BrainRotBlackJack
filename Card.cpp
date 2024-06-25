@@ -1,22 +1,17 @@
+#include "main.h"
 #include "Card.h"
 
-Card::Card(Suit suit, Rank rank) {
-
-    cardSuit = getRandomSuit(suit);
-    cardRank = rank;
-
+Card::Card() {
+    cardRank = getRandomRank();
+    std::cout << cardRank << '\n';
 }
 
-int Card::getRandomSuit(int s) {
+    Card::Rank Card::getRandomRank() {
     std::random_device rd;
-    std::uniform_int_distribution<int> dist(0,3);
-    int suitValue = dist(rd);
-    std::cout << suitValue << std::endl;
-    return suitValue;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> dist(TWO,ACE);
+    int getRandomRank = dist(gen);
+    std::cout << getRandomRank << '\n';
+    return static_cast<Rank>(getRandomRank);
 }
-
-void Card::getRandomRank() {
-
-}
-
 
